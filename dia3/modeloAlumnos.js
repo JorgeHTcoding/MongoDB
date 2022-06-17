@@ -96,7 +96,7 @@ async function MarksUpload(date,mark,student_first_name,student_last_name,group_
 //                 } 
 //             ]
 //         );       
-//         console.log("Nombre y apellido de todos los al")    
+//         console.log("Nombre y apellido de todos los alumnos")    
 //         console.log(alumnos) 
 //     }
 //     catch (err) {
@@ -132,7 +132,7 @@ async function MarksUpload(date,mark,student_first_name,student_last_name,group_
 // async function topAsignaturas() {
 //     let asign = 0;
 //     try {
-//        asign = await Marks.aggregate([{$group:{ _id: "$subject_name", "media": {"$avg": "$mark"}}},{$sort:{"media":- 1}},{$limit:5},{$match:{"media":{"$gt":5}}}])
+//        asign = await Marks.aggregate([{$group:{ _id: "$subject_name", "media": {"$avg": "$mark"}}},{$limit:5},{$match:{"media":{"$gt":5}}},{$sort:{"media":- 1}}])
 //         console.log("Top 5 asignaturas por nota")    
 //         console.log(asign) 
 //     }
@@ -140,6 +140,7 @@ async function MarksUpload(date,mark,student_first_name,student_last_name,group_
 //         console.log(err)
 //     }
 // }
+// topAsignaturas()
 
 // async function totalProfesores() {
 //     try {
@@ -159,7 +160,7 @@ async function MarksUpload(date,mark,student_first_name,student_last_name,group_
 //         try {
 //             let alumnos = await       
 //            Marks.aggregate
-//            ([{$match:{"$and":[{mark: {"$gte": 8}},{"$or":[{date:{"$lt": new Date('2022,01,01')}}]}]}},{$project: {"Nombre" : "$student_first_name" , "Apellido" : "$student_last_name", "Nota" : "$mark", "Fecha": "$date"}}]);       
+//            ([{$match:{"$or":[{mark: {"$gte": 8}},{date:{"$lt": new Date('2022,01,01')}}]}},{$project: {"Nombre" : "$student_first_name" , "Apellido" : "$student_last_name", "Nota" : "$mark", "Fecha": "$date"}}]);       
 //             console.log("Nombre y apellido de todos los alumnos con nota mayor a ocho o del año pasado o anterior")    
 //             console.log(alumnos) 
 //         }
@@ -172,7 +173,7 @@ async function MarksUpload(date,mark,student_first_name,student_last_name,group_
 //     try {
 //         let mediaAnyo = await       
 //        Marks.aggregate(
-//             [{$match:{date:{"$gte": new Date('2018,01,01')}}},{$group:{_id:"$subject_name","Nota Media":{$avg: "$mark"}}}]);       
+//             [{$match:{"$and":[{date:{"$gte": new Date('2022,01,01')}},{date:{"$lt": new Date('2022,12,31')}}]}},{$group:{_id:"$subject_name","Nota Media":{$avg: "$mark"}}}]);       
 //         console.log("Todas las notas del alumno")    
 //         console.log(mediaAnyo) 
 //     }
@@ -182,19 +183,19 @@ async function MarksUpload(date,mark,student_first_name,student_last_name,group_
 // }
 
 
-async function totalAsignaturas(teacher_first_name){
-    try{
-        let totalAsign = await 
-        Marks.aggregate( 
-            [{$match:{"teachers.teacher_first_name" : teacher_first_name }},{$group: {"_id":{"Nombre Alumno": "$student_first_name"},"Total Asignaturas": {"$sum":1}}}]
-        )
+// async function totalAsignaturas(teacher_first_name, teacher_last_name){
+//     try{
+//         let totalAsign = await 
+//         Marks.aggregate( 
+//             [{$unwind:"$teachers"},{$match:{"teacher_first_name" : teacher_first_name , "teacher_last_name" : teacher_last_name }},{$group: {"_id":{"Nombre Alumno": "$student_first_name"},"Total Asignaturas": {"$sum":1}}}]
+//         )
         
-        console.log("Nombres y cantidad total de asignaturas")
-        console.log(totalAsign)
-    }
-    catch(err){
-        console.log(err)
-    }
-}
-totalAsignaturas("Pomona")
+//         console.log("Nombres y cantidad total de asignaturas")
+//         console.log(totalAsign)
+//     }
+//     catch(err){
+//         console.log(err)
+//     }
+// }
+// totalAsignaturas("Severus")
 // {$group:{"_id": teacher_first_name}}{$count:{_id:null,"Asignatura":{$sum:1}}}
