@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index1.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="index1.js"></script>
+    <title>Wombo +</title>
+</head>
+
+<body>
+    <div class="cuerpo">
+        <nav class="navbar ">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                <img src="https://i.ibb.co/7Xcw0Z6/logowombatplus.png" alt="" width="30" height="24" class="d-inline-block align-text-top">                
+              </a>
+            </div>
+          </nav>      
+        </nav>
+        <div class="bloqueForm">
+            <div class="formulario">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="ID profesional" aria-label="ID"
+                        aria-describedby="button-addon2" id="_id">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Nombre del profesional"
+                        aria-label="Nombre del profesional" aria-describedby="button-addon2" id="name">
+
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Apellido del profesional"
+                        aria-label="pellido del profesional" aria-describedby="button-addon2" id="surname">
+
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Edad del profesional" aria-label="age"
+                        aria-describedby="button-addon2" id="age">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="¿Está retirado?" aria-label="retirado"
+                            aria-describedby="button-addon2" id="isRetired">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Número de Oscars" aria-label="oscars"
+                            aria-describedby="button-addon2" id="oscarsNumber">
+                    </div>
+                    
+                    
+                    <div>
+                        <button class="btn btn-outline-secondary" type="reset" id="botonGet" onclick="getProfessional()"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Mostrar</button>
+                        <button class="btn btn-outline-secondary" type="reset" id="botonPost" onclick="postProfessional()">Crear</button>
+                        <button class="btn btn-outline-secondary" type="reset" id="botonPut" onclick="putProfessional()">Actualizar</button>
+                        <button class="btn btn-outline-secondary" type="reset" id="botonDel" onclick="deleteProfessional()">Eliminar</button>               
+                
+                    </div>
+                </div>
+        </div>
+    </div>
+  
+
+    <div class="resultados">
+
+        <!-- <table class="table table-dark table-hover">
+          <tr>
+            <th>Info</th>
+            <th>Datos</th>
+          </tr>
+          <tr>
+            <td>Nombre:</td>
+            <td id="tablaName"></td>
+          </tr>
+          <tr>
+            <td>Apellido:</td>
+            <td id="tablaSurName"></td>
+          </tr>
+          <tr>
+            <td>Edad:</td>
+            <td id="tablaAge"></td>
+          </tr>
+          <tr>
+            <td>Retirado:</td>
+            <td id="tablaIsRetired"></td>
+          </tr>
+          <tr>
+            <td>Profesión:</td>
+            <td id="tablaProfession"></td>
+          </tr>
+        </table> -->
+    </div>
+    </div>
+    <div id="toast" class="toast position-fixed top-0 end-0 p-3 align-items-center text-white border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div id="toastText" class="toast-body">
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+    </div>
+    <div class="cuerpomodal">
+        <div class="modal" tabindex="-1" id="exampleModal">
+            <div class="modal-dialog">
+                <h5 class="modal-title">Resultados</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="tablaName" id="tablaName"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
